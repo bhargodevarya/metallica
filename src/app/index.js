@@ -3,7 +3,6 @@ import ReactDom from 'react-dom'
 import Provider from 'react-redux'
 
 import App from './App'
-import LoginPageTag from './components/login/LoginPage'
 import AppRoutes from './routes/Routes'
 import { BrowserRouter as Router } from 'react-router-dom'
 
