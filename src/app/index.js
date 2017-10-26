@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import Provider from 'react-redux'
+import { Provider } from 'react-redux'
+
+import ConfigureStore from '../app/store/AppStore'
+import {loadTrades} from '../app/actions/TradesAction'
 
 import App from './App'
 import LoginPageTag from './components/login/LoginPage'

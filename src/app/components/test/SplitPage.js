@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 import {Table, TableBody, TableRow, 
     TableHeader, TableHeaderColumn, 
@@ -18,12 +20,13 @@ import TextField from 'material-ui/TextField'
 
 import TradesTable from '../table/TradesTable'
 import getTradesData from '../../api/MockTradeApi'
+import * as TradesAction from '../../actions/TradesAction'
 
 
 class SplitPage extends React.Component {
 
-    constructor(props=getTradesData()) {
-        super(props)
+    constructor(props, context) {
+        super(props, context)
     }
 
     DetailViewIcons() {
@@ -108,7 +111,7 @@ class SplitPage extends React.Component {
             <MuiThemeProvider>
                 <div>
                     <AppBar style={{backgroundColor: 'White'}} 
-                    iconElementLeft={<TradesTable trades={tradesData}/>} 
+                    iconElementLeft={<TradesTable trades={this.props.trade}/>} 
                     iconElementRight={detailCard}
                     iconStyleLeft={{width: '700px'}}
                     iconStyleRight={{width: '550px',visibility:'false'}}/>
@@ -119,7 +122,7 @@ class SplitPage extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    //console.log("#######",state)
+    console.log("#######",state)
     return {
         trade: state.TradesReducer
     };
@@ -131,4 +134,5 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default SplitPage
+
+export default connect(mapStateToProps, mapDispatchToProps)(SplitPage)
