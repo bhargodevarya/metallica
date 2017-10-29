@@ -8,7 +8,7 @@ import ConfigureStore from '../app/store/AppStore'
 import {loadTrades} from '../app/actions/TradesAction'
 
 const store = ConfigureStore();
-store.dispatch(loadTrades())
+//store.dispatch(loadTrades())
 export const App = () => {
     return (<Provider store={store} >
         <div>

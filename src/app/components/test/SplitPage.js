@@ -10,17 +10,20 @@ import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import FlatButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'
-import ActionHome from 'material-ui/svg-icons/action/home';
 import {Card, CardActions, 
     CardHeader, CardMedia, 
     CardTitle, CardText} from 'material-ui/Card';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Avatar from 'material-ui/Avatar'
 import TextField from 'material-ui/TextField'
+import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
+import DeleteIcon from 'material-ui/svg-icons/action/delete'
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
 import TradesTable from '../table/TradesTable'
 import getTradesData from '../../api/MockTradeApi'
 import * as TradesAction from '../../actions/TradesAction'
+import SearchBar from '../search/SearchBar'
 
 
 class SplitPage extends React.Component {
@@ -29,10 +32,20 @@ class SplitPage extends React.Component {
         super(props, context)
     }
 
-    DetailViewIcons() {
+    handleDelete(event) {
+        event.preventDefault()
+        console.log("handle delete")
+    }
+
+    handleEdit() {
+        console.log("handle edit")
+    }
+
+    DetailViewIcons() {        
         return(
             <div>
-                <Avatar>D</Avatar><Avatar>E</Avatar>
+                <IconButton onClick={this.handleDelete.bind(this)}><DeleteIcon/></IconButton>
+                <IconButton onClick={this.handleEdit.bind(this)}><EditIcon/></IconButton>
             </div>
         );
     };
@@ -48,8 +61,8 @@ class SplitPage extends React.Component {
     DetailView2() {
         return (
         <div>
-            {this.TradeLabel("Trade ID: XXXXXX")}
-            {this.DetailViewIcons()}
+            <AppBar style={{width: '520px', backgroundColor:'White'}} iconElementLeft={this.TradeLabel("Trade ID: XXXXXX")} 
+            iconElementRight={this.DetailViewIcons()}></AppBar>
         </div>
         );
     };

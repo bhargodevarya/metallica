@@ -6,10 +6,13 @@ const UserTabs = (props) => {
     let myTabs = props.tabs.map((tab,index) => {
         if(tab === 'TRADES'){
             return <Tab key={index} label={tab} style={{color: 'Black'}}>
+            {props.search}
             {props.content}
             </Tab>
         } else {
-            return <Tab key={index} label={tab} style={{color: 'Black'}}/>
+            return <Tab key={index} label={tab} style={{color: 'Black'}}>
+            {props.search}
+            </Tab>
         }
     });
 

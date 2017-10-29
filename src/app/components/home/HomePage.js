@@ -7,11 +7,12 @@ import AppBar from 'material-ui/AppBar'
 import UserIcon from '../Icons/Icons'
 import UserTabs from '../usertabs/UserTabs'
 import SplitPage from '../test/SplitPage'
+import SearchBar from '../search/SearchBar'
 
 const MyTabs = () => {
     let tabLabels = ['TRADES','TRANSFERS','TRANSPORTS']
     return (
-    <UserTabs tabs={tabLabels} content={<SplitPage/>}/>
+    <UserTabs tabs={tabLabels} content={<SplitPage/>} search={<SearchBar/>}/>
     );
 }
 
