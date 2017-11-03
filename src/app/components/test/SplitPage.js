@@ -24,6 +24,7 @@ import TradesTable from '../table/TradesTable'
 import getTradesData from '../../api/MockTradeApi'
 import * as TradesAction from '../../actions/TradesAction'
 import SearchBar from '../search/SearchBar'
+import TradesDetailTable from '../table/TradesDetailTable'
 
 
 class SplitPage extends React.Component {
@@ -39,6 +40,7 @@ class SplitPage extends React.Component {
 
     handleEdit() {
         console.log("handle edit")
+        console.log(this.props)
     }
 
     DetailViewIcons() {        
@@ -50,13 +52,7 @@ class SplitPage extends React.Component {
         );
     };
     
-    TradeLabel(label) {
-        return (
-        <div>
-            {label}
-        </div>
-        );
-    };
+    TradeLabel(label) { return <div>{label}</div>}
     
     DetailView2() {
         return (
@@ -67,51 +63,12 @@ class SplitPage extends React.Component {
         );
     };
     
-    TradeDetails(){
-        return (
-            <div>
-                <Table>
-                    <TableBody displayRowCheckbox={false}>
-                        <TableRow>
-                            <TableRowColumn>{this.TradeLabel("Trade Date")}</TableRowColumn>
-                            <TableRowColumn><TextField disabled={true}/></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn>{this.TradeLabel("Commodity")}</TableRowColumn>
-                            <TableRowColumn><TextField disabled={true}/></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn>{this.TradeLabel("Side")}</TableRowColumn>
-                            <TableRowColumn><TextField disabled={true}/></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn>{this.TradeLabel("Counter Party")}</TableRowColumn>
-                            <TableRowColumn><TextField disabled={true}/></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn>{this.TradeLabel("Location")}</TableRowColumn>
-                            <TableRowColumn><TextField disabled={true}/></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn>{this.TradeLabel("Price")}</TableRowColumn>
-                            <TableRowColumn><TextField disabled={true}/></TableRowColumn>
-                        </TableRow>
-                        <TableRow>
-                            <TableRowColumn>{this.TradeLabel("Quantity")}</TableRowColumn>
-                            <TableRowColumn><TextField disabled={true}/></TableRowColumn>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </div>
-        );
-    };
-    
     DetailCardView(){
         return(
             <Card>
                 <CardHeader style={{backgroundColor:'White', height:'180px'}} title={this.DetailView2()}/>
                     <CardText>
-                        {this.TradeDetails()}
+                        <TradesDetailTable/>
                     </CardText>
             </Card>
         )

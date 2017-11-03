@@ -12,7 +12,8 @@ class DatePickerComp extends React.Component {
     handleSelection(event, date) {
         this.setState({selectedDate:date})
         let data = {}
-        data[this.props.hintText] = date;      
+        data[this.props.hintText] = date;
+        console.log(data)      
         {this.props.addToSearchCriteria(data)}
     }
 

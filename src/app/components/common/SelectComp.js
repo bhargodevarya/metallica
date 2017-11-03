@@ -5,6 +5,7 @@ import SelectField from 'material-ui/SelectField';
 class SelectComp extends React.Component {
     constructor(props) {
         super(props)
+        console.log(props)
         this.state = {
             selectedValue: props.menuItems[0]
         }
@@ -19,6 +20,7 @@ class SelectComp extends React.Component {
     }
 
     render() {
+        //console.log(this.props.menuItems)
         let menuItems = this.props.menuItems.map(menu => {return <MenuItem value={menu} primaryText={menu}/>})
         return (
             <SelectField value={this.state.selectedValue} style={{width:'100px'}} 
