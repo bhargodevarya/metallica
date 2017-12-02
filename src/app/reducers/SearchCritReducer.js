@@ -2,11 +2,11 @@ import Actions from '../actions/Actions'
 import React from 'react'
 
 function SearchCritReducer(initialState=[], action) {
-    console.log('received action ', action.type, action.searchCriteria)
+    console.log('SearchCritReducer received action ', action.type, action.searchCriteria)
     switch (action.type) {
-        case Actions.SET_SEARCH_CRITERIA:
-            return action.searchCriteria;
-        default:console.log('default from SearchCritReducer')
+        case Actions.SET_ACTIVE_SEARCH_CRITERIA:
+            return action.activeSearchCriteria;
+        default://console.log('default from SearchCritReducer')
             return initialState;
     }
 }

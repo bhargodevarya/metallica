@@ -1,15 +1,29 @@
 import Action from './Actions';
 
-function searchCriteriaSuccess(searchCriteria) {
-    //console.log('creating action', searchCriteria)
+function loadSearchCriteriaSuccess(searchCriteria) {
+    console.log('creating action', Action.LOAD_SEARCH_CRITERIA)
     return {
-        type:Action.SET_SEARCH_CRITERIA,
+        type:Action.LOAD_SEARCH_CRITERIA,
         searchCriteria:searchCriteria        
     }
 }
 
-export function createSearchCriteria(searchCriteria) {
+function setActiveSearchCriteriaSuccess(activeSearchCriteria) {
+    return {
+        type:Action.SET_ACTIVE_SEARCH_CRITERIA,
+        activeSearchCriteria:activeSearchCriteria
+    }
+}
+
+export function createActiveSearchCriteria(activeSearchCriteria) {
     return function(dispatch) {
-        return dispatch(searchCriteriaSuccess(searchCriteria))
+        return dispatch(setActiveSearchCriteriaSuccess(activeSearchCriteria));
+    }
+}
+
+export function loadSearchCriteria(searchCriteria) {
+    console.log("received criteria ", searchCriteria)
+    return function(dispatch) {
+        return dispatch(loadSearchCriteriaSuccess(searchCriteria))
     }
 }

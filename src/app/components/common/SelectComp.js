@@ -5,7 +5,7 @@ import SelectField from 'material-ui/SelectField';
 class SelectComp extends React.Component {
     constructor(props) {
         super(props)
-        console.log(props)
+        //console.log('>>>>>>>>>>>>', props)
         this.state = {
             selectedValue: props.menuItems[0]
         }
