@@ -25,6 +25,8 @@ class TradeDetailView extends React.Component {
     handleDelete(event) {
         event.preventDefault()
         console.log("handle delete")
+        this.props.actions.deleteTradeAction(this.props.trade.id)
+        this.props.actions.setTradeDetailToDefault()
     }
 
     handleEdit() {

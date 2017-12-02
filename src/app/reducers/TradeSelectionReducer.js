@@ -14,6 +14,8 @@ function TradeSelectionReducer(state=createDefaultTrade(true), action) {
                 Object.assign({},state,{"isDisabled":false}))
                 return Object.assign({},state,{"isDisabled":false});
             }
+        case Actions.DEFAULT_EDIT_TRADE:
+            return createDefaultTrade(true)
         default:
             return state;
     }

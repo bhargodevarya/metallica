@@ -25,10 +25,16 @@ function editTrade(trade) {
     }
 }
 
-function deleteTrade(trade) {
+function defaultTradeDetail() {
+    return {
+        type : Actions.DEFAULT_EDIT_TRADE
+    }
+}
+
+function deleteTrade(tradeId) {
     return {
         type : Actions.DELETE_TRADE,
-        trade : trade
+        tradeId : tradeId
     }
 }
 
@@ -64,15 +70,21 @@ export function editTradeAction(trade) {
     }
 }
 
-export function deleteTradeAction(trade) {
+export function deleteTradeAction(tradeId) {
     return function(dispatch) {
-        return dispatch(deleteTrade(trade))
+        return dispatch(deleteTrade(tradeId))
     }
 }
 
 export function selectTradeAction(trade, isDisabled) {
     return function(dispatch) {
         return dispatch(selectedTrade(trade, isDisabled))
+    }
+}
+
+export function setTradeDetailToDefault() {
+    return function(dispatch) {
+        return dispatch(defaultTradeDetail())
     }
 }
 
