@@ -66,6 +66,7 @@ class TradeDetailView extends React.Component {
     render() {
         console.log("the selected trade is >>>////",this.props.trade.isDisabled,this.props.trade)
         return(
+            <div>
             <Card>
                 <CardHeader style={{backgroundColor:'White', height:'180px'}} 
                 title={this.DetailView()}/>
@@ -73,6 +74,7 @@ class TradeDetailView extends React.Component {
                         <TradesDetailTable isDisabled={this.props.trade.isDisabled} selectedTrade={this.props.trade}/>
                     </CardText>
             </Card>
+            </div>
         )
 
     }
