@@ -17,6 +17,8 @@ import * as TradesAction from '../../actions/TradesAction'
 class TradeDetailView extends React.Component {
     constructor(props, context) {
         super(props, context)
+        this.handleEdit=this.handleEdit.bind(this)
+        this.handleDelete=this.handleDelete.bind(this)
     }
 
     
@@ -27,15 +29,16 @@ class TradeDetailView extends React.Component {
 
     handleEdit() {
         console.log("handle edit")
-        console.log(this.props)
-        this.setState({isDisabled:false})        
+        console.log(this.props.trade)
+        //this.setState({isDisabled:false})
+        this.props.actions.selectTradeAction(this.props.trade, false)        
     }
 
-    DetailViewIcons() {        
+    DetailViewIcons(trade) {        
         return(
             <div>
-                <IconButton onClick={this.handleDelete.bind(this)}><DeleteIcon/></IconButton>
-                <IconButton onClick={this.handleEdit.bind(this)}><EditIcon/></IconButton>
+                <IconButton onClick={this.handleDelete}><DeleteIcon/></IconButton>
+                <IconButton onClick={this.handleEdit}><EditIcon/></IconButton>
             </div>
         );
     };
@@ -53,19 +56,19 @@ class TradeDetailView extends React.Component {
         <div>
             <AppBar style={{width: '450px', backgroundColor:'White'}} 
             iconElementLeft={this.TradeLabel(label)} 
-            iconElementRight={this.DetailViewIcons()}></AppBar>
+            iconElementRight={this.DetailViewIcons(this.props.trade)}></AppBar>
         </div>
         );
     };
 
     render() {
-        console.log("the selected trade is >>>////",this.props.trade)
+        console.log("the selected trade is >>>////",this.props.trade.isDisabled,this.props.trade)
         return(
             <Card>
                 <CardHeader style={{backgroundColor:'White', height:'180px'}} 
                 title={this.DetailView()}/>
                     <CardText>
-                        <TradesDetailTable isDisabled={false} selectedTrade={this.props.trade}/>
+                        <TradesDetailTable isDisabled={this.props.trade.isDisabled} selectedTrade={this.props.trade}/>
                     </CardText>
             </Card>
         )

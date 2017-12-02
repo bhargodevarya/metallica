@@ -32,7 +32,7 @@ const setIndex = (index) => {
     //console.log("index is ", index)
     //indexForData = index
     //selectRow(indexForData, tradesData)
-    setEditableTradeFromParent(tradesData[index])
+    setEditableTradeFromParent(tradesData[index], true)
 }
 
 const createTable = (trades, setEditableTrade) => {

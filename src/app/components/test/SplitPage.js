@@ -23,10 +23,10 @@ class SplitPage extends React.Component {
         this.setEditableTrade=this.setEditableTrade.bind(this)
     }
 
-    setEditableTrade(trade) {
+    setEditableTrade(trade, isDisabled) {
         console.log("this func has been passed from the HomePage")
         console.log("will set the editable screen values", trade)
-        this.props.actions.selectTradeAction(trade)
+        this.props.actions.selectTradeAction(trade, isDisabled)
     }
 
     render() {

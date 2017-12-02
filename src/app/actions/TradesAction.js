@@ -32,10 +32,11 @@ function deleteTrade(trade) {
     }
 }
 
-function selectedTrade(trade) {
+function selectedTrade(trade, isDisabled) {
     return {
         type : Actions.SELECT_TRADE,
-        selectedTrade : trade
+        selectedTrade : trade,
+        isDisabled : isDisabled
     }
 }
 
@@ -69,9 +70,9 @@ export function deleteTradeAction(trade) {
     }
 }
 
-export function selectTradeAction(trade) {
+export function selectTradeAction(trade, isDisabled) {
     return function(dispatch) {
-        return dispatch(selectedTrade(trade))
+        return dispatch(selectedTrade(trade, isDisabled))
     }
 }
 

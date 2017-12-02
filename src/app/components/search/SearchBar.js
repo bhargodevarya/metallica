@@ -66,6 +66,7 @@ class SearchBar extends React.Component {
         //console.log(this.props)
         //this.props.action.createActiveSearchCriteria(this.state.localSearchCrit)
         this.props.action.loadTrades();
+        this.props.action.selectTradeAction(null,true)
         //console.log(this.state.localSearchCrit)
         //this.props.action.searchTrades(this.state.localSearchCrit);
     }
