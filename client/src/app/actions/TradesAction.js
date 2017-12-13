@@ -46,6 +46,13 @@ function selectedTrade(trade, isDisabled) {
     }
 }
 
+function updateSelectedTradeField(obj) {
+    return {
+        type: Actions.UPDATE_SELECTED_FIELD,
+        updates: obj
+    }
+}
+
 export function loadTrades() {
     //console.log('called loadTrades')
     return function(dispatch) {
@@ -85,6 +92,12 @@ export function selectTradeAction(trade, isDisabled) {
 export function setTradeDetailToDefault() {
     return function(dispatch) {
         return dispatch(defaultTradeDetail())
+    }
+}
+
+export function updateSelectedFieldValue(obj) {
+    return function(dispatch) {
+        return dispatch(updateSelectedTradeField(obj))
     }
 }
 

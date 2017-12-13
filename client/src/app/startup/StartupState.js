@@ -4,9 +4,9 @@ const AppState = {
     searchCriteria: {
         from:'',
         to:'',
-        Commodity:["AL","ZN"],
-        Countertparty:["Lorem","Azper"],
-        Location:['NYC',"LON","MUM","HKT"]
+        Commodity:["AL","ZN","CU","AU","AG"],
+        Countertparty:["Lorem","Ipsum","Dolor","Amet"],
+        Location:['NY',"LN","SG","DN"]
     },
     data:[]
 }

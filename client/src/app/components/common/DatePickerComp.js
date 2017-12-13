@@ -19,7 +19,7 @@ class DatePickerComp extends React.Component {
 
     render() {
         return(
-            <DatePicker value={this.state.selectedDate} autoOk={true} 
+            <DatePicker disabled={this.props.disabled} value={this.state.selectedDate} autoOk={true} 
             style={{width:'100px'}} hintText={this.props.hintText} onChange={this.handleSelection.bind(this)}/>                    
         );
     }

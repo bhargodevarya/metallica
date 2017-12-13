@@ -19,6 +19,7 @@ class TradeDetailView extends React.Component {
         super(props, context)
         this.handleEdit=this.handleEdit.bind(this)
         this.handleDelete=this.handleDelete.bind(this)
+        this.handleTradeFieldUpdate=this.handleTradeFieldUpdate.bind(this)
     }
 
     
@@ -34,6 +35,10 @@ class TradeDetailView extends React.Component {
         console.log(this.props.trade)
         //this.setState({isDisabled:false})
         this.props.actions.selectTradeAction(this.props.trade, false)        
+    }
+
+    handleTradeFieldUpdate() {
+        console.log('handling field update')
     }
 
     DetailViewIcons(trade) {        
@@ -71,7 +76,10 @@ class TradeDetailView extends React.Component {
                 <CardHeader style={{backgroundColor:'White', height:'180px'}} 
                 title={this.DetailView()}/>
                     <CardText>
-                        <TradesDetailTable isDisabled={this.props.trade.isDisabled} selectedTrade={this.props.trade}/>
+                        <TradesDetailTable
+                        handleTradeFieldUpdate={this.handleTradeFieldUpdate} 
+                        isDisabled={this.props.trade.isDisabled} 
+                        selectedTrade={this.props.trade}/>
                     </CardText>
             </Card>
             </div>
