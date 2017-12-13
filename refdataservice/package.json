@@ -1,0 +1,16 @@
+{
+  "name": "refdataservice",
+  "version": "1.0.0",
+  "description": "Microservice to get the refrence data for metallica UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bhargodev Arya",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "hapi": "^17.1.1",
+    "mongoose": "^4.13.6"
+  }
+}
