@@ -4,7 +4,8 @@
   "description": "Microservice to get the refrence data for metallica UI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/index.js"
   },
   "author": "Bhargodev Arya",
   "license": "ISC",
