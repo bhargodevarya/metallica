@@ -4,6 +4,7 @@ const DBService = require('./service/DBService')
 const Location = require('./schema/location')
 
 const Hapi = require('hapi');
+//var corsHeaders = require('hapi-cors-headers')
 
 const server = new Hapi.Server({port: 3000, host: 'localhost'});
 
@@ -40,6 +41,8 @@ let locations = [
     {code: 'SG', desc: 'Singapore'},
     {code: 'DN', desc: 'Denver'}
 ]
+
+//server.ext('onPreResponse', corsHeaders)
 
 //locations.forEach(DBService.createLocation)
 
