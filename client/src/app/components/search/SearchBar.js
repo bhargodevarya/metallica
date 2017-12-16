@@ -77,6 +77,7 @@ class SearchBar extends React.Component {
         let commodityMenuItems = this.props.searchCriteria.Commodity;
         let counterpartyMenuItems = this.props.searchCriteria.Countertparty
         let locationMenuItems = this.props.searchCriteria.Location
+        console.log("SearchBar refData is ",this.props.refData)
         return(
             <Toolbar>
                 <ToolbarGroup>  
@@ -109,7 +110,8 @@ class SearchBar extends React.Component {
 function mapStateToProps(state, ownProps) {
     //console.log(state.SearchCritReducer)
     return {
-        searchCriteria: state.LoadSearchCritReducer
+        searchCriteria: state.LoadSearchCritReducer,
+        refData: state.RefDataReducer
     }
 }
 

@@ -70,6 +70,12 @@ class TradeDetailView extends React.Component {
 
     render() {
         console.log("the selected trade is >>>////",this.props.trade.isDisabled,this.props.trade)
+        //console.log("TradeDetailView refData is ", this.props)
+        if(Object.keys(this.props.refData).length > 0) {
+            console.log("TradeDetailView refData is ", this.props.refData)
+        } else {
+            console.log("TradeDetailView refData is not present")
+        }
         return(
             <div>
             <Card>
@@ -79,7 +85,8 @@ class TradeDetailView extends React.Component {
                         <TradesDetailTable
                         handleTradeFieldUpdate={this.handleTradeFieldUpdate} 
                         isDisabled={this.props.trade.isDisabled} 
-                        selectedTrade={this.props.trade}/>
+                        selectedTrade={this.props.trade}
+                        refData={this.props.refData}/>
                     </CardText>
             </Card>
             </div>
@@ -89,9 +96,10 @@ class TradeDetailView extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    console.log("#######",state.TradeSelectionReducer)
+    console.log("#######",state.RefDataReducer)
     return {
-        trade: state.TradeSelectionReducer
+        trade: state.TradeSelectionReducer,
+        refData: state.RefDataReducer
     };
 }
 

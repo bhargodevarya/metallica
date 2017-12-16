@@ -1,7 +1,8 @@
 import Actions from '../actions/Actions'
+import React from 'react'
 
 export function loadRefData(refData) {
-    console.log("TradesAction creating a refData action", refData)
+    console.log("RefDataAction creating a refData action", refData)
     return {
         type: Actions.LOAD_REF_DATA,
         refData : refData
@@ -9,7 +10,7 @@ export function loadRefData(refData) {
 }
 
 export function loadRefDataSuccess(refData) {
-    console.log("TradesAction calling the action to load refData", refData)
+    console.log("RefDataAction calling the action to load refData", refData)
     return function(dispatch) {
         return dispatch(loadRefData(refData))
     }

@@ -20,6 +20,17 @@ const TradesDetailTable = (props) => {
         console.log("setting date as null")
         tradeDate=null
     }
+    if(Object.keys(props.refData).length > 0) {
+    console.log("TradesDetailTable ",props.refData.locations[0].code)
+    var locationsMenu = props.refData.locations.filter(l => l.code != props.selectedTrade.Location).map(loc => 
+    <MenuItem value={loc.code} primaryText={loc.code}></MenuItem>)
+    var commoditiesMenu = props.refData.commodities.filter(c => c.code != props.selectedTrade.Commodity).map(com => 
+        <MenuItem value={com.code} primaryText={com.code}></MenuItem>)
+    var counterPartiesMenu = props.refData.counterparties.filter(cp => cp.code != props.selectedTrade.CounterParty).map(counterP => 
+            <MenuItem value={counterP.code} primaryText={counterP.code}></MenuItem>)
+    } else {
+        console.log("TradesDetailTable in the else block ")
+    }        
     return(
         <div>
         <Table selectable={false}>
@@ -41,8 +52,13 @@ const TradesDetailTable = (props) => {
                     {TradeLabel("Commodity")}
                     </TableRowColumn>
                     <TableRowColumn>
-                    <SelectField style={{'width':'120px','padding-left':'0.5cm'}} disabled={props.isDisabled} value={props.selectedTrade.Commodity}>
-                        <MenuItem value={props.selectedTrade.Commodity} primaryText={props.selectedTrade.Commodity}></MenuItem>
+                    <SelectField style={{'width':'120px','padding-left':'0.5cm'}} 
+                    disabled={props.isDisabled} 
+                    value={props.selectedTrade.Commodity}>
+                        {commoditiesMenu}
+                        <MenuItem value={props.selectedTrade.Commodity} 
+                        primaryText={props.selectedTrade.Commodity}>
+                        </MenuItem>
                     </SelectField>
                     </TableRowColumn>
                 </TableRow>
@@ -60,6 +76,7 @@ const TradesDetailTable = (props) => {
                     </TableRowColumn>
                     <TableRowColumn>
                     <SelectField disabled={props.isDisabled} style={{'width':'120px','padding-left':'0.5cm'}} value={props.selectedTrade.CounterParty}>
+                        {counterPartiesMenu}
                         <MenuItem value={props.selectedTrade.CounterParty} primaryText={props.selectedTrade.CounterParty}></MenuItem>
                     </SelectField>
                     </TableRowColumn>
@@ -86,6 +103,7 @@ const TradesDetailTable = (props) => {
                     </TableRowColumn>
                     <TableRowColumn>
                         <SelectField disabled={props.isDisabled} value={props.selectedTrade.Location}>
+                        {locationsMenu}
                         <MenuItem value={props.selectedTrade.Location} primaryText={props.selectedTrade.Location}></MenuItem>
                         </SelectField>
                     </TableRowColumn>
