@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 let TradeSchema = new Schema({
+    TradeId: Number,
     TradeDate: Date,
     Commodity: String,
     Side: String,

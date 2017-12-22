@@ -1,0 +1,15 @@
+{
+  "name": "rabbitmqclient",
+  "version": "1.0.0",
+  "description": "client to connect to RabbitMQ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/index.js"
+  },
+  "author": "Bhargodev Arya",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.2"
+  }
+}

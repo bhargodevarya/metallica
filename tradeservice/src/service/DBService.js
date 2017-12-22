@@ -19,5 +19,14 @@ function getAll() {
         var dataFromProm = Trade.find({});
         return dataFromProm;
 }
+function deleteTrade(tradeId) {
+    connect();
+    Trade.remove({TradeId: tradeId})
+}
+
+function updateTrade(trade) {
+    connect();
+    Trade.findOneAndUpdate({TradeId: trade.TradeId},trade)
+}
 
 module.exports = {createTrade, getAll}

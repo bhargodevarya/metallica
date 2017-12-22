@@ -3,3 +3,4 @@ build/bundle*
 refdataservice/node_modules
 client/node_modules
 tradeservice/node_modules
+rabbitmqclient/node_modules
