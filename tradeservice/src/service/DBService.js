@@ -29,4 +29,15 @@ function updateTrade(trade) {
     Trade.findOneAndUpdate({TradeId: trade.TradeId},trade)
 }
 
-module.exports = {createTrade, getAll}
+function searchTrade(search) {
+    connect();
+    return Trade.find({
+        TradeDate: {$gte: search.from, $lte: search.to},
+        Commodity: search.commodity,
+        Side: search.side,
+        Location: search.location,
+        Counterparty: search.counterparty
+    })
+}
+
+module.exports = {createTrade, getAll, searchTrade}

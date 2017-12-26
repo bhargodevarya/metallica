@@ -38,6 +38,14 @@ var routes = [{
         //reply('updated').code('200')
         return h.response('updated')
     }
+},
+{
+    method: 'POST',
+    path: '/trade/search',
+    handler: (request, h) => {
+        console.log(request.payload)
+        return DBservice.searchTrade(request.payload)
+    }
 }
 ]
 
