@@ -8,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem'
 
 import SelectComp from '../common/SelectComp'
 import DatePickerComp from '../common/DatePickerComp'
+import CheckBoxComp from '../common/CheckBoxComp'
 
 import * as SearchAction from '../../actions/SearchAction'
 import * as TradesAction from '../../actions/TradesAction'
@@ -28,11 +29,15 @@ class SearchBar extends React.Component {
     constructor(props, context) {
         super(props, context)
         this.state={
-            localSearchCrit:{}
+            localSearchCrit:{},
+            buyCheck:false,
+            sellCheck:false
         }
 
         this.addSearchCriteria=this.addSearchCriteria.bind(this)
         this.search=this.search.bind(this)
+        this.handleBuyCheckbox=this.handleBuyCheckbox.bind(this)
+        this.handleSellCheckbox=this.handleSellCheckbox.bind(this)
     }
 /**
  * 
@@ -44,6 +49,7 @@ class SearchBar extends React.Component {
         this.state.localSearchCrit = Object.assign({},this.state.localSearchCrit, obj)
         //this.props.activeSearchCriteria = Object.assign(this.state.searchCriteria, obj);
         //console.log(this.props.searchCriteria)
+        console.log(this.state.localSearchCrit)
     }
 
     clearSearchCriteria() {
@@ -68,7 +74,34 @@ class SearchBar extends React.Component {
         this.props.action.loadTrades();
         this.props.action.selectTradeAction(null,true)
         //console.log(this.state.localSearchCrit)
-        //this.props.action.searchTrades(this.state.localSearchCrit);
+        this.props.action.searchTrades(this.state.localSearchCrit);
+    }
+
+    handleBuyCheckbox(event) {
+        //event.preventDefault();
+        console.log("buy checkbox",event.target)
+        this.setState((oldState) => {
+            return {
+              buyCheck: !oldState.buyCheck,
+            };
+          });
+        this.addSearchCriteria({Side:"Buy"})
+    }
+
+    handleSellCheckbox(event) {
+        event.preventDefault();
+        console.log("sell checkbox",event)
+        this.setState((oldState) => {
+            console.log("oldstate is", oldState)
+            if(oldState.sellCheck) {
+                this.addSearchCriteria({Side:""})
+            } else {
+                this.addSearchCriteria({Side:"Sell"})
+            }
+            return {
+              sellCheck: !oldState.sellCheck,
+            };
+          });
     }
 
     render() {
@@ -82,16 +115,15 @@ class SearchBar extends React.Component {
             <Toolbar>
                 <ToolbarGroup>  
                     <DatePickerComp addToSearchCriteria={this.addSearchCriteria} 
-                    style={{width:'100px'}} hintText="from"/>
+                    style={{width:'100px'}} hintText="From"/>
 
                     <DatePickerComp addToSearchCriteria={this.addSearchCriteria} 
-                    style={{width:'100px'}} hintText="to"/> 
+                    style={{width:'100px'}} hintText="To"/> 
 
                     <SelectComp addToSearchCriteria={this.addSearchCriteria} 
                     label="Commodity" menuItems={commodityMenuItems} style={{width:'100px'}}/> 
 
-                    <Checkbox style={{width:'75px'}} label="Buy"/>                    
-                    <Checkbox style={{width:'75px'}} label="Sell"/>
+                    <CheckBoxComp addSearchCriteria={this.addSearchCriteria}/>
 
                     <SelectComp addToSearchCriteria={this.addSearchCriteria} 
                     label="Counterparty" menuItems={counterpartyMenuItems} style={{width:'100px'}}/> 
@@ -99,8 +131,8 @@ class SearchBar extends React.Component {
                     <SelectComp addToSearchCriteria={this.addSearchCriteria} 
                     label="Location" menuItems={locationMenuItems} style={{width:'100px'}}/>  
                        
-                    <FlatButton label="search" onClick={this.search}/>                    
-                    <FlatButton label="clear" onClick={this.clearSearchCriteria.bind(this)}/>
+                    <FlatButton label="Search" onClick={this.search}/>                    
+                    <FlatButton label="Clear" onClick={this.clearSearchCriteria.bind(this)}/>
                 </ToolbarGroup>
             </Toolbar>
         );

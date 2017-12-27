@@ -28,6 +28,9 @@ var routes = [{
     handler: (request, reply) => {
         console.log("creating a trade", request.payload);
         return "created"
+    },
+    config: {
+        cors: true
     }
 },
 {
@@ -37,6 +40,9 @@ var routes = [{
         console.log('updating the trade', request.payload)
         //reply('updated').code('200')
         return h.response('updated')
+    },
+    config: {
+        cors: true
     }
 },
 {
@@ -45,6 +51,9 @@ var routes = [{
     handler: (request, h) => {
         console.log(request.payload)
         return DBservice.searchTrade(request.payload)
+    },
+    config: {
+        cors: true
     }
 }
 ]

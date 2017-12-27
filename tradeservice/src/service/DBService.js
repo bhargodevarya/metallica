@@ -31,12 +31,21 @@ function updateTrade(trade) {
 
 function searchTrade(search) {
     connect();
+    let q = {
+        TradeDate: {$gte: search.From, $lte: search.To},
+        Commodity: search.Commodity,
+        Side: {$in : search.side},
+        Location: search.Location,
+        //Counterparty: search.Counterparty
+    }
+    //console.log(q)
+    //Trade.find(q).then(res => console.log(res))
     return Trade.find({
-        TradeDate: {$gte: search.from, $lte: search.to},
-        Commodity: search.commodity,
-        Side: search.side,
-        Location: search.location,
-        Counterparty: search.counterparty
+        TradeDate: {$gte: search.From, $lte: search.To},
+        Commodity: search.Commodity,
+        Side: {$in : search.side},
+        Location: search.Location,
+        //Counterparty: search.Counterparty
     })
 }
 

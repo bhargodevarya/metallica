@@ -15,7 +15,10 @@ function TradesReducer(state=[],action) {
             return state.filter((trade) => trade.id != action.tradeId);    
         case Actions.EDIT_TRADE:
             console.log("will edit the trade", action.trade)
-            return state;          
+            return state; 
+        case Actions.SEARCH_TRADE:
+            console.log("will make a call to get trades", action.criteria)
+            return state;         
         default://console.log('default from tradesReducer')
             return state;
     }

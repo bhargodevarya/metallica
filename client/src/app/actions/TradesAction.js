@@ -1,6 +1,7 @@
 import getTradesData from '../api/MockTradeApi'
 import Actions from './Actions'
 import { makeDateString } from '../util/Util'
+import axios from 'axios'
 
 export function loadTradesSuccess(trades) {
     //console.log('dispatching', trades, Actions.FETCH_TRADES)
@@ -53,6 +54,13 @@ function updateSelectedTradeField(obj) {
     }
 }
 
+function searchTrade(criteria) {
+    return {
+        type: Actions.SEARCH_TRADE,
+        criteria: criteria
+    }
+}
+
 export function loadTrades() {
     //console.log('called loadTrades')
     return function(dispatch) {
@@ -65,9 +73,12 @@ export function searchTrades(searchCriteria) {
     console.log('received the search criteria as ', searchCriteria)
     let trades = getTradesData();
     //TODO create a function that filters trades based on the searchCriteria
-    filterTrades(trades, searchCriteria)
+    //filterTrades(trades, searchCriteria)
+    axios.post('http://localhost:4000/trade/search',searchCriteria).then(res => {
+        console.log(res.data)
+    }).catch(err => console.log(err))
     return function(dispatch) {
-        return dispatch(searchTradesSuccess({}));
+        return dispatch(searchTrade(searchCriteria));
     }
 }
 
