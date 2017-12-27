@@ -40,7 +40,10 @@ function searchTrade(search) {
         //Counterparty: search.Counterparty
     }
     //console.log(q)
-    Trade.find(q).then(res => qclient.publishMessage('trade.ops', res))
+    Trade.find(q).then(res => {
+        console.log(res);
+        qclient.publishMessage('trade.ops', res)
+    })
     return Trade.find(q)
 }
 

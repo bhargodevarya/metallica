@@ -16,20 +16,25 @@ function createExchange(exchange, props) {
 }
 
 function publishMessage(exchange, msg) {
-    console.log(msg)
+    //console.log(msg)
     connProm.then(conn => {
         conn.createChannel().then(ch => {
-            ch.publish(exchange, '', Buffer.from(msg))
+            //console.log("publishing",msg)
+            ch.publish(exchange, '', Buffer.from(JSON.stringify(msg)))
+            //console.log('msg published')
         })
     })
 }
 
-function getMessage(queue, exchange) {
+function getMessage(queue, exchange, cb) {
+    //console.log(queue, exchange)
     amqpcb.connect('amqp://localhost', (err, conn) => {
+        //console.log("connected")
         conn.createChannel((err, ch) => {
             ch.bindQueue(queue, exchange,'')
+            //console.log('binded')
             ch.consume(queue, (msg) => {
-                console.log(msg.content.toString())
+                cb(msg.content.toString())
                 ch.ackAll()
             })
         })
@@ -38,7 +43,10 @@ function getMessage(queue, exchange) {
 //getMessage('test', 'testEx')
 //publishMessage('testEx', 'message from the node client')
 
-//getMessage('trade.queue','trade.ops')
+// getMessage('trade.queue','trade.ops', function cb(msg) {
+//     console.log(">>>>>>>>");
+//     console.log(msg)
+// })
 
 module.exports = {
     getMessage, publishMessage

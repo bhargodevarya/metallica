@@ -1,3 +1,7 @@
+//const index = require('./index')
+
+//index.getMessage('trade.queue', 'trade.ops', (msg) => {console.log(msg)})
+
 /*
 alternate version with promises
 function processMessage(que, exchange) {
