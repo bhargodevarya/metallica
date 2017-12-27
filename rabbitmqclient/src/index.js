@@ -16,6 +16,7 @@ function createExchange(exchange, props) {
 }
 
 function publishMessage(exchange, msg) {
+    console.log(msg)
     connProm.then(conn => {
         conn.createChannel().then(ch => {
             ch.publish(exchange, '', Buffer.from(msg))
@@ -34,8 +35,10 @@ function getMessage(queue, exchange) {
         })
     })
 }
-getMessage('test', 'testEx')
-publishMessage('testEx', 'message from the node client')
+//getMessage('test', 'testEx')
+//publishMessage('testEx', 'message from the node client')
+
+//getMessage('trade.queue','trade.ops')
 
 module.exports = {
     getMessage, publishMessage

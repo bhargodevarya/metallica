@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const Trade = require('../schema/Trade')
+const qclient = require('../../../rabbitmqclient/src/index')
 
 function connect(){
     mongoose.connect('mongodb://localhost:27017/Metallica')
@@ -39,14 +40,8 @@ function searchTrade(search) {
         //Counterparty: search.Counterparty
     }
     //console.log(q)
-    //Trade.find(q).then(res => console.log(res))
-    return Trade.find({
-        TradeDate: {$gte: search.From, $lte: search.To},
-        Commodity: search.Commodity,
-        Side: {$in : search.side},
-        Location: search.Location,
-        //Counterparty: search.Counterparty
-    })
+    Trade.find(q).then(res => qclient.publishMessage('trade.ops', res))
+    return Trade.find(q)
 }
 
 module.exports = {createTrade, getAll, searchTrade}
