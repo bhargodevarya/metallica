@@ -8,12 +8,15 @@ import DatePicker from 'material-ui/DatePicker';
 
 import DatePickerComp from '../common/DatePickerComp'
 import SelectComp from '../common/SelectComp'
+import TextFieldComp from '../common/TextFieldComp'
 
 let TradeLabel = (label) => { return <div>{label}</div>}
 
 //TODO convert each row from textbox to respective component
+//TODO send TradeId while editing an existing trade
 const TradesDetailTable = (props) => {
     let tradeDate;let selectedCommodity,selectedCounterparty, selectedLocation;
+    var newTrade=false;
     if(props.selectedTrade.TradeDate) {
         console.log(props.selectedTrade.TradeDate.replace("/","-"))
         //tradeDate=new Date(props.selectedTrade.TradeDate)
@@ -22,9 +25,11 @@ const TradesDetailTable = (props) => {
         selectedCommodity=props.selectedTrade.Commodity
         selectedCounterparty=props.selectedTrade.CounterParty
         selectedLocation=props.selectedTrade.Location
+        newTrade=false
     } else {
         console.log("setting date as null")
         tradeDate=null
+        newTrade=true
     }
     if(Object.keys(props.refData).length > 0) {
     console.log("TradesDetailTable ",props.refData.commodities)
@@ -55,6 +60,7 @@ const TradesDetailTable = (props) => {
                    <DatePickerComp handleChange={props.handleTradeFieldUpdate} 
                     value={tradeDate}
                     style={{width:'100px'}}
+                    hintText={"TradeDate"}
                     disabled={props.isDisabled}/>
                     </TableRowColumn>
                 </TableRow>
@@ -66,6 +72,7 @@ const TradesDetailTable = (props) => {
                     <SelectComp value={selectedCommodity} handleChange={props.handleTradeFieldUpdate} 
                     disabled={props.isDisabled}
                     menuItems={myCommodities} 
+                    label={"Commodity"}
                     style={{'width':'120px','padding-left':'0.5cm'}}/> 
                     </TableRowColumn>
                 </TableRow>
@@ -74,7 +81,10 @@ const TradesDetailTable = (props) => {
                     {TradeLabel("Side")}
                     </TableRowColumn>
                     <TableRowColumn>
-                        <TextField disabled={props.isDisabled} value={props.selectedTrade.Side}/>
+                        <TextFieldComp isDisabled={props.isDisabled}
+                        value={props.selectedTrade.Side} 
+                        handleChange={props.handleTradeFieldUpdate}
+                        label={"Side"}/>
                     </TableRowColumn>
                 </TableRow>
                 <TableRow displayBorder={false}>
@@ -85,6 +95,7 @@ const TradesDetailTable = (props) => {
                     <SelectComp value={selectedCounterparty} handleChange={props.handleTradeFieldUpdate} 
                     disabled={props.isDisabled}
                     menuItems={myCounterparties} 
+                    label={"Counterparty"}
                     style={{'width':'120px','padding-left':'0.5cm'}}/>
                     </TableRowColumn>
                 </TableRow>
@@ -93,7 +104,10 @@ const TradesDetailTable = (props) => {
                     {TradeLabel("Price")}
                     </TableRowColumn>
                     <TableRowColumn>
-                        <TextField disabled={props.isDisabled} value={props.selectedTrade.Price}/>
+                        <TextFieldComp isDisabled={props.isDisabled}
+                        value={props.selectedTrade.Price}
+                        handleChange={props.handleTradeFieldUpdate}
+                        label={"Price"}/>
                     </TableRowColumn>
                 </TableRow>
                 <TableRow displayBorder={false}>
@@ -101,7 +115,10 @@ const TradesDetailTable = (props) => {
                     {TradeLabel("Quantity")}
                     </TableRowColumn>
                     <TableRowColumn>
-                        <TextField disabled={props.isDisabled} value={props.selectedTrade.Qty}/>
+                        <TextFieldComp isDisabled={props.isDisabled}
+                        value={props.selectedTrade.Qty}
+                        handleChange={props.handleTradeFieldUpdate}
+                        label={"Qty"}/>
                     </TableRowColumn>
                 </TableRow>
                 <TableRow displayBorder={false}>
@@ -111,13 +128,14 @@ const TradesDetailTable = (props) => {
                     <TableRowColumn>
                         <SelectComp value={selectedLocation} handleChange={props.handleTradeFieldUpdate} 
                     disabled={props.isDisabled}
-                    menuItems={myLocations}/>
+                    menuItems={myLocations} label={"location"}/>
                     </TableRowColumn>
                 </TableRow>
                 <TableRow displayBorder={false}>
                     <TableRowColumn></TableRowColumn>
                     <TableRowColumn>
-                        <FlatButton label="Save"/>
+                        <FlatButton label="Save" 
+                        onClick={(event) => props.tradeModificationFunc(newTrade) }/>
                         <FlatButton label="Cancel"/>
                     </TableRowColumn>
                 </TableRow>

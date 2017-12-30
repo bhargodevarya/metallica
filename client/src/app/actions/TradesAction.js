@@ -47,10 +47,11 @@ function selectedTrade(trade, isDisabled) {
     }
 }
 
-function updateSelectedTradeField(obj) {
+function upsertTrade(obj) {
+    console.log("TradesAction, upsert fired", obj)
     return {
-        type: Actions.UPDATE_SELECTED_FIELD,
-        updates: obj
+        type: Actions.UPSERT_TRADE,
+        trade: obj
     }
 }
 
@@ -107,14 +108,20 @@ export function selectTradeAction(trade, isDisabled) {
 }
 
 export function setTradeDetailToDefault() {
+    
     return function(dispatch) {
         return dispatch(defaultTradeDetail())
     }
 }
 
-export function updateSelectedFieldValue(obj) {
+export function fireUpsertTrade(obj) {
+    if(obj.newTrade) {
+        axios.post('http://localhost:4000/trade/createTrade',obj).then(res => console.log(res.data))
+    } else {
+        axios.put('http://localhost:4000/trade/updateTrade',obj).then(res => console.log(res.data))
+    }
     return function(dispatch) {
-        return dispatch(updateSelectedTradeField(obj))
+        return dispatch(upsertTrade(obj))
     }
 }
 

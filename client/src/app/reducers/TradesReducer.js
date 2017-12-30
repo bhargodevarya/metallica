@@ -18,6 +18,9 @@ function TradesReducer(state=[],action) {
             return state; 
         case Actions.SEARCH_TRADE:
             console.log("will make a call to get trades", action.criteria)
+            return state;
+        case Actions.UPSERT_TRADE:
+            console.log("will update/insert trade", action.trade)
             return state;         
         default://console.log('default from tradesReducer')
             return state;

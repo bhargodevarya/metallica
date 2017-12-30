@@ -17,16 +17,21 @@ import * as TradesAction from '../../actions/TradesAction'
 class TradeDetailView extends React.Component {
     constructor(props, context) {
         super(props, context)
+
+        this.state={
+            updatedTrade:{}
+        }
         this.handleEdit=this.handleEdit.bind(this)
         this.handleDelete=this.handleDelete.bind(this)
         this.handleTradeFieldUpdate=this.handleTradeFieldUpdate.bind(this)
+        this.handleUpsert=this.handleUpsert.bind(this)
     }
 
     
     handleDelete(event) {
         event.preventDefault()
         console.log("handle delete")
-        this.props.actions.deleteTradeAction(this.props.trade.id)
+        this.props.actions.deleteTradeAction(this.props.selectedTrade.id)
         this.props.actions.setTradeDetailToDefault()
     }
 
@@ -37,8 +42,15 @@ class TradeDetailView extends React.Component {
         this.props.actions.selectTradeAction(this.props.trade, false)        
     }
 
-    handleTradeFieldUpdate() {
-        console.log('handling field update')
+    handleTradeFieldUpdate(obj) {
+        console.log('handling field update', obj)
+        this.state.updatedTrade = Object.assign({}, this.state.updatedTrade, obj)
+        console.log("updatedTrade is ", this.state.updatedTrade)
+    }
+
+    handleUpsert(newTrade) {
+        let myNewTrade=Object.assign({}, this.state.updatedTrade,{"newTrade":newTrade})
+        this.props.actions.fireUpsertTrade(myNewTrade)
     }
 
     DetailViewIcons(trade) {        
@@ -54,8 +66,8 @@ class TradeDetailView extends React.Component {
     
     DetailView() {
         let label;
-        if(this.props.trade.id) {
-            label = "TRADE ID: ".concat(this.props.trade.id)
+        if(this.props.selectedTrade.id) {
+            label = "TRADE ID: ".concat(this.props.selectedTrade.id)
         } else {
             label = "TRADE ID: "
         }
@@ -69,7 +81,7 @@ class TradeDetailView extends React.Component {
     };
 
     render() {
-        console.log("the selected trade is >>>////",this.props.trade.isDisabled,this.props.trade)
+        console.log("the selected trade is >>>////",this.props.selectedTrade)
         //console.log("TradeDetailView refData is ", this.props)
         if(Object.keys(this.props.refData).length > 0) {
             console.log("TradeDetailView refData is ", this.props.refData)
@@ -84,9 +96,10 @@ class TradeDetailView extends React.Component {
                     <CardText>
                         <TradesDetailTable
                         handleTradeFieldUpdate={this.handleTradeFieldUpdate} 
-                        isDisabled={this.props.trade.isDisabled} 
-                        selectedTrade={this.props.trade}
-                        refData={this.props.refData}/>
+                        isDisabled={this.props.selectedTrade.isDisabled} 
+                        selectedTrade={this.props.selectedTrade}
+                        refData={this.props.refData}
+                        tradeModificationFunc={this.handleUpsert}/>
                     </CardText>
             </Card>
             </div>
@@ -96,10 +109,11 @@ class TradeDetailView extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    console.log("#######",state.RefDataReducer)
+    console.log("#######",state)
     return {
-        trade: state.TradeSelectionReducer,
-        refData: state.RefDataReducer
+        selectedTrade: state.TradeSelectionReducer,
+        refData: state.RefDataReducer,
+        tradeRed: state.TradesReducer
     };
 }
 

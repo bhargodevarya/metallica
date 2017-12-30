@@ -1,5 +1,8 @@
 const DBservice = require('./service/DBService')
+const Trade = require('./schema/Trade')
 
+
+//TODO logic to generate TradeId randomly
 var routes = [{
     method: 'GET',
     path : '/trade/getAllTrades',
@@ -28,6 +31,13 @@ var routes = [{
     path : '/trade/createTrade',
     handler: (request, reply) => {
         console.log("creating a trade", request.payload);
+        let trade = new Trade({TradeDate: request.payload.TradeDate, 
+            Commodity: request.payload.Commodity, 
+            Side: request.payload.Side, Qty: request.payload.Qty, 
+            Price: request.payload.Price, Counterparty: request.payload.Counterparty, 
+            Location: request.payload.location
+        })
+        DBservice.upsertTrade(trade)
         return "created"
     },
     config: {
@@ -39,6 +49,14 @@ var routes = [{
     path : '/trade/updateTrade',
     handler: (request, h) => {
         console.log('updating the trade', request.payload)
+        let trade = new Trade({
+            TradeId:12341,TradeDate: request.payload.TradeDate, 
+            Commodity: request.payload.Commodity, 
+            Side: request.payload.Side, Qty: request.payload.Qty, 
+            Price: request.payload.Price, Counterparty: request.payload.Counterparty, 
+            Location: request.payload.location
+        })
+        DBservice.upsertTrade(trade)
         //reply('updated').code('200')
         return h.response('updated')
     },
