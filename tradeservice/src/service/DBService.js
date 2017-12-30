@@ -22,12 +22,27 @@ function getAll() {
 }
 function deleteTrade(tradeId) {
     connect();
-    Trade.remove({TradeId: tradeId})
+    Trade.remove({TradeId: tradeId}, (err) => {
+        if(err) {
+            console.log(err)
+        } else {
+            console.log("deleted", tradeId)
+        }
+    })
 }
 
-function updateTrade(trade) {
+function upsertTrade(trade) {
     connect();
-    Trade.findOneAndUpdate({TradeId: trade.TradeId},trade)
+    let newOb = {}
+    newOb = Object.assign(newOb,trade._doc)
+    delete newOb._id
+    Trade.findOneAndUpdate({"TradeId": trade.TradeId},newOb,{upsert:true, new: true},(err,res) => {
+        if(err) {
+            console.log(err)
+            return;
+        }
+        console.log("from CB", res)
+    })
 }
 
 function searchTrade(search) {
@@ -47,4 +62,4 @@ function searchTrade(search) {
     return Trade.find(q)
 }
 
-module.exports = {createTrade, getAll, searchTrade}
+module.exports = {createTrade, getAll, searchTrade, deleteTrade, upsertTrade, connect}

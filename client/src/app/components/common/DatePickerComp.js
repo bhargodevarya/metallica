@@ -4,9 +4,16 @@ import DatePicker from 'material-ui/DatePicker'
 class DatePickerComp extends React.Component {
     constructor(props) {
         super(props)
+        //let initValue=this.props.value
+        //console.log("intial value is ", initValue)
         this.state={
             selectedDate:null
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log("called componentWillReceiveProps", nextProps.value)
+        this.state.selectedDate=nextProps.value
     }
 
     handleSelection(event, date) {
@@ -14,7 +21,7 @@ class DatePickerComp extends React.Component {
         let data = {}
         data[this.props.hintText] = date;
         console.log(data)      
-        {this.props.addToSearchCriteria(data)}
+        {this.props.handleChange(data)}
     }
 
     render() {

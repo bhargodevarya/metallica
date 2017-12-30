@@ -24,9 +24,10 @@ let commodities = [
     {code: 'AL', desc: 'Aluminium'},
     {code: 'ZN', desc: 'Zinc'},
     {code: 'CU', desc: 'Copper'},
-    {code: 'AU', desc: 'Gold'}
+    {code: 'AU', desc: 'Gold'},
+    {code: 'AG', desc: 'Silver'}
 ]
-//commodities.forEach(comm => DBService.createCommodity(comm))
+commodities.forEach(comm => DBService.createCommodity(comm))
 let counterParties = [
     {code: 'Lorem', desc: 'Lorem'},
     {code: 'Ipsum', desc: 'Ipsum'},

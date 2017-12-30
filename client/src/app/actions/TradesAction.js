@@ -89,6 +89,12 @@ export function editTradeAction(trade) {
 }
 
 export function deleteTradeAction(tradeId) {
+    console.log('received request to delete trade', tradeId)
+    axios.delete(`http://localhost:4000/trade/deleteTrade/${tradeId}`).then(res => {
+        console.log(res.data)
+    }).catch(err => {
+        console.log(err)
+    })
     return function(dispatch) {
         return dispatch(deleteTrade(tradeId))
     }

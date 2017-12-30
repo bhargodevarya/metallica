@@ -16,6 +16,7 @@ var routes = [{
     path : '/trade/deleteTrade/{id}',
     handler : (request, reply) => {
         console.log("received a request to delete trade", request.params.id)
+        DBservice.deleteTrade(request.params.id)
         return "deleted"
     },
     config: {

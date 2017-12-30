@@ -7,25 +7,37 @@ class SelectComp extends React.Component {
         super(props)
         //console.log('>>>>>>>>>>>>', props)
         this.state = {
-            selectedValue: props.menuItems[0]
+            selectedValue:null
         }
     }
 
+    componentWillReceiveProps(newProps) {
+        this.state.selectedValue=newProps.value
+        console.log("componentsReceived",newProps.value, newProps.menuItems)
+    }
+
     handleSelection(event, index, value) {
-        event.preventDefault();
+        //event.preventDefault();
+        console.log("selected",index, value)
         this.setState({selectedValue: value});
         let data = {}
         data[this.props.label] = value;      
-        {this.props.addToSearchCriteria(data)}
+        {this.props.handleChange(data)}
     }
 
     render() {
         //console.log(this.props.menuItems)
-        let menuItems = this.props.menuItems.map(menu => {return <MenuItem value={menu} primaryText={menu}/>})
+        let myMenuItems;
+        if(this.props.menuItems) {
+            console.log("inside if",this.props.menuItems)
+            myMenuItems = this.props.menuItems.map(menu => {return <MenuItem value={menu.code} primaryText={menu.code}/>})
+        }
         return (
-            <SelectField value={this.state.selectedValue} style={{width:'100px'}} 
+            <SelectField value={this.state.selectedValue} style={{width:'100px'}} disabled={this.props.disabled}
             floatingLabelText={this.props.label} onChange={this.handleSelection.bind(this)}>
-                {menuItems}
+            
+                {myMenuItems}
+                
             </SelectField>
         );
     }

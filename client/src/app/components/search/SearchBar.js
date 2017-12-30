@@ -107,28 +107,39 @@ class SearchBar extends React.Component {
     render() {
         //console.log(this.props.searchCriteria.Commodity)
         console.log(this.props.searchCriteria)
-        let commodityMenuItems = this.props.searchCriteria.Commodity;
-        let counterpartyMenuItems = this.props.searchCriteria.Countertparty
-        let locationMenuItems = this.props.searchCriteria.Location
+        let commodityMenuItems = []
+        let counterpartyMenuItems = []
+        let locationMenuItems = []
+        let selectedCommodity,selectedCounterparty, selectedLocation;
         console.log("SearchBar refData is ",this.props.refData)
+        if(Object.keys(this.props.refData).length > 0) {
+            commodityMenuItems = this.props.refData.commodities
+            selectedCommodity=commodityMenuItems[0]
+            counterpartyMenuItems = this.props.refData.counterparties
+            selectedCounterparty=counterpartyMenuItems[0]
+            locationMenuItems = this.props.refData.locations
+            selectedLocation=locationMenuItems[0]
+        } else {
+            console.log("in the else block", this.props.refData)
+        }
         return(
             <Toolbar>
                 <ToolbarGroup>  
-                    <DatePickerComp addToSearchCriteria={this.addSearchCriteria} 
+                    <DatePickerComp handleChange={this.addSearchCriteria} 
                     style={{width:'100px'}} hintText="From"/>
 
-                    <DatePickerComp addToSearchCriteria={this.addSearchCriteria} 
+                    <DatePickerComp handleChange={this.addSearchCriteria} 
                     style={{width:'100px'}} hintText="To"/> 
 
-                    <SelectComp addToSearchCriteria={this.addSearchCriteria} 
+                    <SelectComp handleChange={this.addSearchCriteria} value={selectedCommodity}
                     label="Commodity" menuItems={commodityMenuItems} style={{width:'100px'}}/> 
 
                     <CheckBoxComp addSearchCriteria={this.addSearchCriteria}/>
 
-                    <SelectComp addToSearchCriteria={this.addSearchCriteria} 
+                    <SelectComp handleChange={this.addSearchCriteria} value={selectedCounterparty}
                     label="Counterparty" menuItems={counterpartyMenuItems} style={{width:'100px'}}/> 
 
-                    <SelectComp addToSearchCriteria={this.addSearchCriteria} 
+                    <SelectComp handleChange={this.addSearchCriteria} value={selectedLocation}
                     label="Location" menuItems={locationMenuItems} style={{width:'100px'}}/>  
                        
                     <FlatButton label="Search" onClick={this.search}/>                    
