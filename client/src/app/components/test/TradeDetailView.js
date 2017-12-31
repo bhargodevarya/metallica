@@ -49,7 +49,14 @@ class TradeDetailView extends React.Component {
     }
 
     handleUpsert(newTrade) {
-        let myNewTrade=Object.assign({}, this.state.updatedTrade,{"newTrade":newTrade})
+        let tradeId = {}
+        if(newTrade) {
+            tradeId["TradeId"]=""
+        } else {
+            tradeId["TradeId"]=this.props.selectedTrade.id
+        }
+        let myNewTrade=Object.assign({}, this.state.updatedTrade,{"newTrade":newTrade}, tradeId)
+        console.log("handleUpsert", myNewTrade)
         this.props.actions.fireUpsertTrade(myNewTrade)
     }
 

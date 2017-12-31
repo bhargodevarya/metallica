@@ -31,13 +31,7 @@ var routes = [{
     path : '/trade/createTrade',
     handler: (request, reply) => {
         console.log("creating a trade", request.payload);
-        let trade = new Trade({TradeDate: request.payload.TradeDate, 
-            Commodity: request.payload.Commodity, 
-            Side: request.payload.Side, Qty: request.payload.Qty, 
-            Price: request.payload.Price, Counterparty: request.payload.Counterparty, 
-            Location: request.payload.location
-        })
-        DBservice.upsertTrade(trade)
+        DBservice.generateTradeIdAndSave(request.payload)
         return "created"
     },
     config: {
@@ -56,7 +50,7 @@ var routes = [{
             Price: request.payload.Price, Counterparty: request.payload.Counterparty, 
             Location: request.payload.location
         })
-        DBservice.upsertTrade(trade)
+        DBservice.upsertTrade(trade, true)
         //reply('updated').code('200')
         return h.response('updated')
     },

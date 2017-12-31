@@ -286,5 +286,6 @@ function upsertDemo() {
 	DBService.upsertTrade(trade)
 }
 
+DBService.maxDemo()
 //upsertDemo()
 
