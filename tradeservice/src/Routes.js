@@ -44,7 +44,7 @@ var routes = [{
     handler: (request, h) => {
         console.log('updating the trade', request.payload)
         let trade = new Trade({
-            TradeId:12341,TradeDate: request.payload.TradeDate, 
+            TradeId:request.payload.TradeId,TradeDate: request.payload.TradeDate, 
             Commodity: request.payload.Commodity, 
             Side: request.payload.Side, Qty: request.payload.Qty, 
             Price: request.payload.Price, Counterparty: request.payload.Counterparty, 

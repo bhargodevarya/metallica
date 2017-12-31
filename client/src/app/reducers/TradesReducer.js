@@ -12,7 +12,7 @@ function TradesReducer(state=[],action) {
         case Actions.DELETE_TRADE:
             console.log("reducer for action ", Actions.DELETE_TRADE)
             console.log("will delete the trade ", action.tradeId)
-            return state.filter((trade) => trade.id != action.tradeId);    
+            return state.filter((trade) => trade.TradeId != action.tradeId);    
         case Actions.EDIT_TRADE:
             console.log("will edit the trade", action.trade)
             return state; 

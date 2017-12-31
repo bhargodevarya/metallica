@@ -4,12 +4,18 @@ function exportSocket(sock) {
     socket = sock
 }
 
-function emitMarketData(msg) {
+function emitData(type, msg) {
     if(socket) {
-        socket.emit('metaldata', msg)
+        if(type === 'marketmsg') {
+            //socket.emit('metaldata', msg)
+        } else if(type === 'getmsg') {
+            socket.emit('getdata', msg)
+        } else if(type === 'updatemsg') {
+            socket.emit('updatedata', msg)
+        }
     } else {
         console.log("no client")
     }
 }
 
-module.exports = {exportSocket, emitMarketData}
+module.exports = {exportSocket, emitData}

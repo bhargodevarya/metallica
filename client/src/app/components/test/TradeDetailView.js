@@ -31,7 +31,7 @@ class TradeDetailView extends React.Component {
     handleDelete(event) {
         event.preventDefault()
         console.log("handle delete")
-        this.props.actions.deleteTradeAction(this.props.selectedTrade.id)
+        this.props.actions.deleteTradeAction(this.props.selectedTrade.TradeId)
         this.props.actions.setTradeDetailToDefault()
     }
 
@@ -53,7 +53,7 @@ class TradeDetailView extends React.Component {
         if(newTrade) {
             tradeId["TradeId"]=""
         } else {
-            tradeId["TradeId"]=this.props.selectedTrade.id
+            tradeId["TradeId"]=this.props.selectedTrade.TradeId
         }
         let myNewTrade=Object.assign({}, this.state.updatedTrade,{"newTrade":newTrade}, tradeId)
         console.log("handleUpsert", myNewTrade)
@@ -69,12 +69,12 @@ class TradeDetailView extends React.Component {
         );
     };
     
-    TradeLabel(label) { return <div>{label}</div>}
+    TradeLabel(label) { return <div>{label}{"partial update not working"}</div>}
     
     DetailView() {
         let label;
-        if(this.props.selectedTrade.id) {
-            label = "TRADE ID: ".concat(this.props.selectedTrade.id)
+        if(this.props.selectedTrade.TradeId) {
+            label = "TRADE ID: ".concat(this.props.selectedTrade.TradeId)
         } else {
             label = "TRADE ID: "
         }

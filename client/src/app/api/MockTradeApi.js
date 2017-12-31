@@ -1,5 +1,5 @@
 const data = {data:[
-    {"id":1234,
+    {"TradeId":1234,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -8,7 +8,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12341,
+	{"TradeId":12341,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -17,7 +17,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12342,
+	{"TradeId":12342,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -26,7 +26,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12343,
+	{"TradeId":12343,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -35,7 +35,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12344,
+	{"TradeId":12344,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -44,7 +44,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12345,
+	{"TradeId":12345,
 	"TradeDate":'03/24/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -53,7 +53,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12346,
+	{"TradeId":12346,
 	"TradeDate":'03/30/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -62,7 +62,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12347,
+	{"TradeId":12347,
 	"TradeDate":'06/16/2017',
 	"Commodity":'ZN',
 	"Side":'Buy',
@@ -71,7 +71,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12348,
+	{"TradeId":12348,
 	"TradeDate":'07/25/2017',
 	"Commodity":'AG',
 	"Side":'Buy',
@@ -80,7 +80,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":12349,
+	{"TradeId":12349,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -89,7 +89,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123410,
+	{"TradeId":123410,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -98,7 +98,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123411,
+	{"TradeId":123411,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -107,7 +107,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123412,
+	{"TradeId":123412,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -116,7 +116,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123413,
+	{"TradeId":123413,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -125,7 +125,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123414,
+	{"TradeId":123414,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -134,7 +134,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123415,
+	{"TradeId":123415,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -143,7 +143,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123416,
+	{"TradeId":123416,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -152,7 +152,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123417,
+	{"TradeId":123417,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -161,7 +161,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123418,
+	{"TradeId":123418,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -170,7 +170,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123419,
+	{"TradeId":123419,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -179,7 +179,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123420,
+	{"TradeId":123420,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -188,7 +188,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123421,
+	{"TradeId":123421,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -197,7 +197,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123422,
+	{"TradeId":123422,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -206,7 +206,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123423,
+	{"TradeId":123423,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -215,7 +215,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123424,
+	{"TradeId":123424,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -224,7 +224,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123425,
+	{"TradeId":123425,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -233,7 +233,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123426,
+	{"TradeId":123426,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -242,7 +242,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123427,
+	{"TradeId":123427,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',
@@ -251,7 +251,7 @@ const data = {data:[
 	"CounterParty":'Lorem',
 	"Location":'NY'
 	},
-	{"id":123428,
+	{"TradeId":123428,
 	"TradeDate":'03/23/2017',
 	"Commodity":'AL',
 	"Side":'Buy',

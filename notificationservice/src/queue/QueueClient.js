@@ -2,26 +2,27 @@ const qclient = require('../../../rabbitmqclient/src/index')
 const qUtil = require('./QueueUtil')
 
 function getTradeMessages() {
-    qclient.getMessage('trade.queue.get', 'trade.ops', msgOuputCB)
+    qclient.getMessage('trade.queue.get', 'trade.ops', (msg) => emitViaSocket('getmsg', msg))
 }
 
 function getTradeUpdateMsgs() {
-    qclient.getMessage('trade.queue.updates', 'trade.ops', msgOuputCB)
+    qclient.getMessage('trade.queue.updates', 'trade.ops', 
+    (msg) => emitViaSocket('updatemsg', msg))
 }
 
 function getMetalPrices(metals) {
     metals.forEach(metal => 
         qclient.getMessage('market.data.'.concat(metal),'market.ops', 
-        msgOuputCB));
+        (msg) => emitViaSocket('marketmsg', msg)));
 }
 
 function msgOuputCB(msg) {
     console.log(msg)
-    qUtil.emitMarketData(msg)
 }
 
-function sendToClient() {
-
+function emitViaSocket(type,msg) {
+    qUtil.emitData(type, msg)
+    msgOuputCB(msg)
 }
 //getTradeMessages()
 //getTradeUpdateMsgs()
