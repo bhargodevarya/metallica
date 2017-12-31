@@ -57,7 +57,7 @@ function searchTrade(search) {
     //console.log(q)
     Trade.find(q).then(res => {
         console.log(res);
-        qclient.publishMessage('trade.ops', res)
+        qclient.publishMessage('trade.ops', 'trade.get', res)
     })
     return Trade.find(q)
 }

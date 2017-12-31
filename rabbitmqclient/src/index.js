@@ -15,12 +15,12 @@ function createExchange(exchange, props) {
 )
 }
 
-function publishMessage(exchange, msg) {
+function publishMessage(exchange, routingKey, msg) {
     //console.log(msg)
     connProm.then(conn => {
         conn.createChannel().then(ch => {
             //console.log("publishing",msg)
-            ch.publish(exchange, '', Buffer.from(JSON.stringify(msg)))
+            ch.publish(exchange, routingKey, Buffer.from(JSON.stringify(msg)))
             //console.log('msg published')
         })
     })
