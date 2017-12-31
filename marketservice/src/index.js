@@ -19,7 +19,7 @@ setInterval(() => {
     AL.price=getRandomInt(1000,2000)
     CU.price=getRandomInt(1000,2000)
     ZN.price=getRandomInt(1000,2000)
-    console.log(AU,AG,AL,CU,ZN)
+    //console.log(AU,AG,AL,CU,ZN)
     qClient.publishMessage('market.ops','data.au',AU)
     qClient.publishMessage('market.ops','data.ag',AG)
     qClient.publishMessage('market.ops','data.al',AL)
