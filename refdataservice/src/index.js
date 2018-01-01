@@ -51,3 +51,5 @@ let locations = [
 
 
 //DBService.createCommodity({code: 'AL', desc: 'Aluminium'})
+
+module.exports = {server}

@@ -4,7 +4,7 @@
   "description": "Microservice to get the refrence data for metallica UI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --watch **/test/index.test.js",
     "dev": "node src/index.js"
   },
   "author": "Bhargodev Arya",
@@ -14,5 +14,10 @@
     "hapi": "^17.1.1",
     "hapi-cors-headers": "^1.0.3",
     "mongoose": "^4.13.6"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.1.0"
   }
 }

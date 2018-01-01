@@ -30,9 +30,23 @@ function getAll() {
     connect()
     let result ={}
         var dataFromProm = Location.find({}).
-        then(loc => {result.locations=loc;return Commodity.find({});}).
-        then(comm => {result.commodities=comm;return CounterParty.find({});}).
-        then(cp => {result.counterparties=cp;return result});
+        then(loc => {
+            let locations=[];
+            loc.forEach(l => {locations.push({code:l.code,desc:l.desc})});
+            result.locations=locations;
+            return Commodity.find({});
+        }).
+        then(comm => {
+            let commodities=[];
+            comm.forEach(comm => commodities.push({code:comm.code, desc:comm.desc}));
+            result.commodities=commodities;
+            return CounterParty.find({});
+        }).
+        then(cp => {
+            let counterparties=[];
+            cp.forEach(cp => counterparties.push({code:cp.code, desc:cp.desc}));
+            result.counterparties=counterparties;
+            return result});
         return dataFromProm;
 }
 
