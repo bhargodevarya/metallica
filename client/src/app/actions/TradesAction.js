@@ -62,11 +62,16 @@ function searchTrade(criteria) {
     }
 }
 
-export function loadTrades() {
-    //console.log('called loadTrades')
+//TODO need to be called from the socket util
+export function loadTrades(trades) {
+    console.log('called loadTrades',trades.data)
     return function(dispatch) {
-        return dispatch(loadTradesSuccess(getTradesData().data));
+        return dispatch(loadTradesSuccess(trades.data));
     }
+    // console.log('called loadTrades',getTradesData().data)
+    //  return function(dispatch) {
+    //      return dispatch(loadTradesSuccess(getTradesData().data));
+    // }
 }
 
 //TODO make an API call with the search criteria

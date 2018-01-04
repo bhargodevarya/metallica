@@ -6,10 +6,11 @@ import { Provider } from 'react-redux'
 
 import ConfigureStore from '../app/store/AppStore'
 import {AppState, initializeAppState} from '../app/startup/StartupState'
-import {startSocket} from './socket/util.js'
+import util from './socket/util'
 
 const store = ConfigureStore();
 initializeAppState(store)
+util.importStore(store)
 //startSocket()
 export const App = () => {
     return (<Provider store={store} >

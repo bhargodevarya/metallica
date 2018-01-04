@@ -34,7 +34,7 @@ function getMessage(queue, exchange, cb) {
             ch.bindQueue(queue, exchange,'')
             //console.log('binded')
             ch.consume(queue, (msg) => {
-                cb(msg.content.toString())
+                cb(JSON.parse(msg.content))
                 ch.ackAll()
             })
         })

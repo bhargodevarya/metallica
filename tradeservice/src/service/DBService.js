@@ -55,12 +55,18 @@ function searchTrade(search) {
         TradeDate: {$gte: search.From, $lte: search.To},
         Commodity: search.Commodity,
         Side: {$in : search.side},
-        Location: search.Location,
+        Location: search.Location
         //Counterparty: search.Counterparty
     }
     //console.log(q)
-    Trade.find(q).then(res => {
-        console.log(res);
+    Trade.find({
+        TradeDate: {$gte: search.From, $lte: search.To},
+        Commodity: search.Commodity,
+        Side: {$in : search.side},
+        Location: search.Location}, 
+        '-_id Commodity TradeDate TradeId Side Qty Price Location Counterparty').
+        then(res => {
+        console.log(">>>>",res);
         qclient.publishMessage('trade.ops', 'trade.get', res)
     })
     return Trade.find(q)

@@ -5,6 +5,7 @@ function TradesReducer(state=[],action) {
     console.log('TradesReducer received the action of type ', action.type)
     switch (action.type) {
         case Actions.LOAD_TRADES:
+        console.log("TradesReducer loaded trades", action.trades)
             return action.trades;
         case Actions.FETCH_TRADES:
             console.log('reducer for action ', Actions.FETCH_TRADES)

@@ -3,11 +3,17 @@ import ReactDom from 'react-dom';
 import muiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar'
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import MenuItem from 'material-ui/MenuItem';
 
 import UserIcon from '../Icons/Icons'
 import UserTabs from '../usertabs/UserTabs'
 import SplitPage from '../test/SplitPage'
 import SearchBar from '../search/SearchBar'
+import FlatButton from 'material-ui/FlatButton/FlatButton';
+import {googleProvider, firebaseAuth} from '../login/Login'
 
 /**
  * MAKE THIS THE ONLY COMPONENT THAT GETS DATA FROM THE STORE
@@ -48,6 +54,7 @@ import SearchBar from '../search/SearchBar'
 
     constructor(props) {
         super(props)
+        this.handleLogOut=this.handleLogOut.bind(this)
     }
 
     setEditableTrade(trade) {
@@ -64,12 +71,24 @@ import SearchBar from '../search/SearchBar'
         );
     }
 
+    handleLogOut() {
+        console.log("logout")
+        firebaseAuth().signOut().then(user => {
+            console.log("in the logout callback")
+            this.props.history.push("/")
+        })
+        console.log("after the logout, cb no finished")
+    }
+
     render() {
+        //this.setState({loggedin:true})
         return (
             <MuiThemeProvider>
                 <div>
                     <AppBar style={{backgroundColor: 'White'}} iconElementLeft={this.MyTabs()}
-                    iconElementRight={<UserIcon initials="U"/>}/>
+                    // iconElementRight={<UserIcon initials="U"/>}/>
+                    iconElementRight={<FlatButton style={{backgroundColor: 'Red'}} 
+                    label={"l"} primary={true} onClick={this.handleLogOut}/>}/>
                 </div>            
             </MuiThemeProvider>
         )

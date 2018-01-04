@@ -9,7 +9,7 @@ function emitData(type, msg) {
         if(type === 'marketmsg') {
             //socket.emit('metaldata', msg)
         } else if(type === 'getmsg') {
-            socket.emit('getdata', msg)
+            socket.emit('getdata', {data:msg})
         } else if(type === 'updatemsg') {
             socket.emit('updatedata', msg)
         }

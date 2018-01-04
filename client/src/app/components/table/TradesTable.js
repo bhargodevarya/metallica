@@ -49,7 +49,7 @@ const createTable = (trades, setEditableTrade) => {
                 <TableRowColumn style={{fontSize:'12px'}}>{trade.Side}</TableRowColumn>
                 <TableRowColumn style={{fontSize:'12px'}}>{trade.Qty}</TableRowColumn>
                 <TableRowColumn style={{fontSize:'12px'}}>{trade.Price}</TableRowColumn>
-                <TableRowColumn style={{fontSize:'12px'}}>{trade.CounterParty}</TableRowColumn>
+                <TableRowColumn style={{fontSize:'12px'}}>{trade.Counterparty}</TableRowColumn>
                 <TableRowColumn style={{fontSize:'12px'}}>{trade.Location}</TableRowColumn>
                 </TableRow>
             )

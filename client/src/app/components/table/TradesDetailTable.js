@@ -23,7 +23,7 @@ const TradesDetailTable = (props) => {
         //TODO parse TradeDate in the following format
         tradeDate=new Date(props.selectedTrade.TradeDate)
         selectedCommodity=props.selectedTrade.Commodity
-        selectedCounterparty=props.selectedTrade.CounterParty
+        selectedCounterparty=props.selectedTrade.Counterparty
         selectedLocation=props.selectedTrade.Location
         newTrade=false
     } else {
