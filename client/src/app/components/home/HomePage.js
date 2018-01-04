@@ -8,7 +8,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/MenuItem';
 
-import UserIcon from '../Icons/Icons'
+import Logout from '../Icons/Icons'
 import UserTabs from '../usertabs/UserTabs'
 import SplitPage from '../test/SplitPage'
 import SearchBar from '../search/SearchBar'
@@ -86,9 +86,7 @@ import {googleProvider, firebaseAuth} from '../login/Login'
             <MuiThemeProvider>
                 <div>
                     <AppBar style={{backgroundColor: 'White'}} iconElementLeft={this.MyTabs()}
-                    // iconElementRight={<UserIcon initials="U"/>}/>
-                    iconElementRight={<FlatButton style={{backgroundColor: 'Red'}} 
-                    label={"l"} primary={true} onClick={this.handleLogOut}/>}/>
+                    iconElementRight={<Logout logout={this.handleLogOut}/>}/>
                 </div>            
             </MuiThemeProvider>
         )

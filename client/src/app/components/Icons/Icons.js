@@ -1,17 +1,18 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Avatar from 'material-ui/Avatar'
-import FlatButton from 'material-ui/FlatButton'
+import IconButton from 'material-ui/IconButton'
+import Input from 'material-ui/svg-icons/action/input'
 
-const UserIcon = (props) => {
+const LogoutIcon = (props) => {
     return (
         <div>
             <MuiThemeProvider>
-                {/* <Avatar>{props.initials}</Avatar> */}
-                <FlatButton label="logout"/>
+                <IconButton onClick={props.logout}>
+                    <Input/>
+                </IconButton>
             </MuiThemeProvider>
         </div>
     );
 }
 
-module.exports = UserIcon
+module.exports = LogoutIcon
