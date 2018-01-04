@@ -51,25 +51,50 @@ function upsertTrade(trade, shouldConnect) {
 
 function searchTrade(search) {
     connect();
-    let q = {
-        TradeDate: {$gte: search.From, $lte: search.To},
-        Commodity: search.Commodity,
-        Side: {$in : search.side},
-        Location: search.Location
-        //Counterparty: search.Counterparty
-    }
-    //console.log(q)
-    Trade.find({
-        TradeDate: {$gte: search.From, $lte: search.To},
-        Commodity: search.Commodity,
-        Side: {$in : search.side},
-        Location: search.Location}, 
+    //console.log("createquery",createQuery(search))
+    Trade.find(createQuery(search), 
         '-_id Commodity TradeDate TradeId Side Qty Price Location Counterparty').
         then(res => {
         console.log(">>>>",res);
         qclient.publishMessage('trade.ops', 'trade.get', res)
     })
     return Trade.find(q)
+}
+
+function createQuery(search) {
+    let q={};var fromSet = false;
+    //console.log("search is",search)
+    if(search.From) {
+        //console.log("from found")
+        fromSet=true
+    }
+    if(search.To) {
+        if(fromSet) {
+            q.TradeDate={$gte: search.From, $lte: search.To}            
+        } else {
+            q.TradeDate={$lte: search.To}            
+        }
+    } else {
+        if(fromSet) {
+            q.TradeDate={$gte: search.From}            
+        }
+    }
+    //console.log("q is", q)
+    if(search.Commodity) {
+        q.Commodity = search.Commodity
+    }
+    //console.log(search.side)
+    if(search.side) {
+        q.Side = search.side
+    }
+    //console.log("q is", q)
+    if(search.Location) {
+        q.Location = search.Location
+    }
+    if(search.Counterparty) {
+        q.Counterparty = search.Counterparty
+    }
+    return q
 }
 
 function generateTradeIdAndSave(obj) {
