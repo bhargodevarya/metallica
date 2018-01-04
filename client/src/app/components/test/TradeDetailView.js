@@ -25,6 +25,12 @@ class TradeDetailView extends React.Component {
         this.handleDelete=this.handleDelete.bind(this)
         this.handleTradeFieldUpdate=this.handleTradeFieldUpdate.bind(this)
         this.handleUpsert=this.handleUpsert.bind(this)
+        this.handleCancel=this.handleCancel.bind(this)
+    }
+
+    handleCancel(event) {
+        event.preventDefault()
+        this.props.actions.setTradeDetailToDefault()
     }
 
     
@@ -112,7 +118,8 @@ class TradeDetailView extends React.Component {
                 title={this.DetailView()}/>
                     <CardText>
                         <TradesDetailTable
-                        handleTradeFieldUpdate={this.handleTradeFieldUpdate} 
+                        handleTradeFieldUpdate={this.handleTradeFieldUpdate}
+                        handleCancel={this.handleCancel} 
                         isDisabled={this.props.selectedTrade.isDisabled} 
                         selectedTrade={this.props.selectedTrade}
                         refData={this.props.refData}

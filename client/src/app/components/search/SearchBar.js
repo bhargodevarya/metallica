@@ -73,6 +73,10 @@ class SearchBar extends React.Component {
         //this.props.action.createActiveSearchCriteria(this.state.localSearchCrit)
         //TODO need to remove the call below
         //this.props.action.loadTrades();
+        if(Object.keys(this.state.localSearchCrit).length < 1) {
+            alert('Please select atleast one criteria')
+            return;
+        }
         this.props.action.selectTradeAction(null,true)
         //console.log(this.state.localSearchCrit)
         this.props.action.searchTrades(this.state.localSearchCrit);

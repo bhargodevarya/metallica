@@ -14,6 +14,7 @@ import SplitPage from '../test/SplitPage'
 import SearchBar from '../search/SearchBar'
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 import {googleProvider, firebaseAuth} from '../login/Login'
+import Scroller from '../scroller/Scroller'
 
 /**
  * MAKE THIS THE ONLY COMPONENT THAT GETS DATA FROM THE STORE
@@ -85,6 +86,7 @@ import {googleProvider, firebaseAuth} from '../login/Login'
         return (
             <MuiThemeProvider>
                 <div>
+                    <Scroller/>
                     <AppBar style={{backgroundColor: 'White'}} iconElementLeft={this.MyTabs()}
                     iconElementRight={<Logout logout={this.handleLogOut}/>}/>
                 </div>            

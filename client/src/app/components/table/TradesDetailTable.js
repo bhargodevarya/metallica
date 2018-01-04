@@ -5,10 +5,12 @@ import FlatButton from 'material-ui/FlatButton'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
 import DatePickerComp from '../common/DatePickerComp'
 import SelectComp from '../common/SelectComp'
 import TextFieldComp from '../common/TextFieldComp'
+import RadioBtnGrpComp from '../common/RadioBtnGrpComp'
 
 let TradeLabel = (label) => { return <div>{label}</div>}
 
@@ -81,10 +83,9 @@ const TradesDetailTable = (props) => {
                     {TradeLabel("Side")}
                     </TableRowColumn>
                     <TableRowColumn>
-                        <TextFieldComp isDisabled={props.isDisabled}
-                        value={props.selectedTrade.Side} 
-                        handleChange={props.handleTradeFieldUpdate}
-                        label={"Side"}/>
+                        <RadioBtnGrpComp value={props.selectedTrade.Side} 
+                        label={"Side"} isDisabled={props.isDisabled} labels={["Buy", "Sell"]} 
+                        handleChange={props.handleTradeFieldUpdate}/>
                     </TableRowColumn>
                 </TableRow>
                 <TableRow displayBorder={false}>
@@ -136,7 +137,8 @@ const TradesDetailTable = (props) => {
                     <TableRowColumn>
                         <FlatButton label="Save" 
                         onClick={(event) => props.tradeModificationFunc(newTrade) }/>
-                        <FlatButton label="Cancel"/>
+                        <FlatButton label="Cancel" 
+                        onClick={(event) => props.handleCancel(event)}/>
                     </TableRowColumn>
                 </TableRow>
             </TableBody>
