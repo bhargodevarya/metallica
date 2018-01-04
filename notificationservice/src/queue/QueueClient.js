@@ -17,7 +17,7 @@ function getMetalPrices(metals) {
 }
 
 function msgOuputCB(msg) {
-    console.log(msg)
+    //console.log(msg)
 }
 
 function emitViaSocket(type,msg) {

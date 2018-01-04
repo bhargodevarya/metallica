@@ -53,6 +53,7 @@ class Login extends React.Component {
             <MuiThemeProvider>
                 <div>
                     {/* <AppBar style={{background: 'white'}} iconElementLeft={<FlatButton primary={true} label="Metallica"/>}/> */}
+                    {/* <Scroller/> */}
                     <FlatButton label="login with google" primary={true} onClick={this.handleLogin}/>
                 </div>
             </MuiThemeProvider>

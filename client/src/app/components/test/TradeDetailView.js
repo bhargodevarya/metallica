@@ -50,12 +50,22 @@ class TradeDetailView extends React.Component {
 
     handleUpsert(newTrade) {
         let tradeId = {}
+        let myNewTrade
         if(newTrade) {
             tradeId["TradeId"]=""
+            if(Object.keys(newTrade).length < 7){
+                alert("Please enter all required values")
+                return;
+            }
         } else {
             tradeId["TradeId"]=this.props.selectedTrade.TradeId
         }
-        let myNewTrade=Object.assign({}, this.state.updatedTrade,{"newTrade":newTrade}, tradeId)
+        if(!newTrade){
+            myNewTrade=Object.assign({}, this.props.selectedTrade, this.state.updatedTrade,{"newTrade":newTrade}, tradeId)
+        } else {
+            myNewTrade=Object.assign({}, this.state.updatedTrade,{"newTrade":newTrade}, tradeId)
+        }
+        
         console.log("handleUpsert", myNewTrade)
         this.props.actions.fireUpsertTrade(myNewTrade)
     }
@@ -69,7 +79,7 @@ class TradeDetailView extends React.Component {
         );
     };
     
-    TradeLabel(label) { return <div>{label}{"partial update not working"}</div>}
+    TradeLabel(label) { return <div>{label}</div>}
     
     DetailView() {
         let label;

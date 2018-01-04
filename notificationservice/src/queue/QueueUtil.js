@@ -7,7 +7,9 @@ function exportSocket(sock) {
 function emitData(type, msg) {
     if(socket) {
         if(type === 'marketmsg') {
-            //socket.emit('metaldata', msg)
+            socket.emit('metaldata', msg)
+            console.log("emitted", msg)
+            //socket.emit('data',{data:1})
         } else if(type === 'getmsg') {
             socket.emit('getdata', {data:msg})
         } else if(type === 'updatemsg') {
