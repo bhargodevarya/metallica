@@ -59,10 +59,11 @@ class TradeDetailView extends React.Component {
         let myNewTrade
         if(newTrade) {
             tradeId["TradeId"]=""
-            if(Object.keys(newTrade).length < 7){
+            console.log("new trade is", this.state.updatedTrade)
+            if(Object.keys(this.state.updatedTrade).length < 7){
                 alert("Please enter all required values")
                 return;
-            }
+            }            
         } else {
             tradeId["TradeId"]=this.props.selectedTrade.TradeId
         }

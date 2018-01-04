@@ -1,0 +1,33 @@
+{
+  "name": "metallica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-jest": "^22.0.4",
+    "babel-polyfill": "^6.26.0",
+    "firebase": "^4.8.1",
+    "jest": "^22.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  },
+  "scripts": {
+    "start:refdataservice": "npm run dev --prefix refdataservice",
+    "start:tradeservice": "npm run dev --prefix tradeservice",
+    "start:notificationservice": "npm run dev --prefix notificationservice",
+    "start:marketservice": "npm run dev --prefix marketservice ",
+    "start:client": "npm run dev --prefix client",
+    "start": "concurrently \"npm run start:refdataservice\" \"npm run start:notificationservice\" \"npm run start:tradeservice\" \"npm run start:marketservice\" \"npm run start:client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhargodevarya/metallica.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhargodevarya/metallica/issues"
+  },
+  "homepage": "https://github.com/bhargodevarya/metallica#readme"
+}
