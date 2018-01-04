@@ -12,7 +12,10 @@ function importStore(store) {
     console.log("store imported", myStore)
 }
 
-socket.on('metaldata', (msg) => console.log(msg))
+socket.on('metaldata', (msg) => {
+    //console.log(msg);
+    //Scroller
+})
 socket.on('getdata', (msg) => {
     console.log("getdata",JSON.stringify(msg));
     //TradesActions.loadTrades(msg)
@@ -20,4 +23,4 @@ socket.on('getdata', (msg) => {
 })
 socket.on('updatedata', (msg) => console.log(msg))
 
-module.exports = {importStore}
+module.exports = {importStore, socket}

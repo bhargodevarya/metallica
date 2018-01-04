@@ -10,10 +10,9 @@ function getTradeUpdateMsgs() {
     (msg) => emitViaSocket('updatemsg', msg))
 }
 
-function getMetalPrices(metals) {
-    metals.forEach(metal => 
-        qclient.getMessage('market.data.'.concat(metal),'market.ops', 
-        (msg) => emitViaSocket('marketmsg', msg)));
+function getMetalPrices() {
+    qclient.getMessage('market.data','market.ops',
+    (msg) => emitViaSocket('marketmsg',msg));
 }
 
 function msgOuputCB(msg) {
@@ -24,10 +23,6 @@ function emitViaSocket(type,msg) {
     qUtil.emitData(type, msg)
     msgOuputCB(msg)
 }
-//getTradeMessages()
-//getTradeUpdateMsgs()
-
-//getMetalPrices(['au','ag','al','cu','zn'])
 
 module.exports = {
     getMetalPrices, getTradeMessages, getTradeUpdateMsgs

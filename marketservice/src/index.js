@@ -14,15 +14,12 @@ function getRandomInt(min, max) {
   }
 
 setInterval(() => {
-    AU.price=getRandomInt(1000,2000)
-    AG.price=getRandomInt(1000,2000)
-    AL.price=getRandomInt(1000,2000)
-    CU.price=getRandomInt(1000,2000)
-    ZN.price=getRandomInt(1000,2000)
-    //console.log(AU,AG,AL,CU,ZN)
-    qClient.publishMessage('market.ops','data.au',AU)
-    qClient.publishMessage('market.ops','data.ag',AG)
-    qClient.publishMessage('market.ops','data.al',AL)
-    qClient.publishMessage('market.ops','data.cu',CU)
-    qClient.publishMessage('market.ops','data.zn',ZN)
+    qClient.publishMessage('market.ops','data.market',{
+        'AU':getRandomInt(100,2000),
+        'AL':getRandomInt(100,2000),
+        'AG':getRandomInt(100,2000),
+        'CU':getRandomInt(100,2000),
+        'ZN':getRandomInt(100,2000)
+                
+    })
 },5000)

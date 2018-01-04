@@ -10,7 +10,7 @@ import {Redirect} from 'react-router-dom'
 import {googleProvider, firebaseAuth} from './Login'
 import Scroller from '../scroller/Scroller'
 
-class Login extends React.Component {
+class LoginPage extends React.Component {
 
     constructor(props) {
         super(props)
@@ -53,7 +53,7 @@ class Login extends React.Component {
             <MuiThemeProvider>
                 <div>
                     {/* <AppBar style={{background: 'white'}} iconElementLeft={<FlatButton primary={true} label="Metallica"/>}/> */}
-                    {/* <Scroller/> */}
+                    <Scroller/>
                     <FlatButton label="login with google" primary={true} onClick={this.handleLogin}/>
                 </div>
             </MuiThemeProvider>
@@ -61,4 +61,4 @@ class Login extends React.Component {
     }
 }
 
-module.exports = Login
+module.exports = LoginPage
