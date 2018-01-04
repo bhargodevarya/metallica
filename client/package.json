@@ -4,7 +4,7 @@
   "description": "UI for the metallica app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack",
     "dev": "webpack-dev-server --open"
   },
@@ -30,7 +30,12 @@
     "webpack": "^3.8.1"
   },
   "devDependencies": {
+    "babel-jest": "^22.0.4",
+    "babel-polyfill": "^6.26.0",
+    "enzyme": "^3.3.0",
+    "jest": "^22.0.4",
     "lodash": "^4.17.4",
+    "react-addons-test-utils": "^15.6.2",
     "webpack-dev-server": "^2.9.3"
   }
 }
