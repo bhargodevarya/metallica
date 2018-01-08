@@ -50,7 +50,8 @@ class LoginPage extends React.Component {
         return (
             <MuiThemeProvider>
                 <div>
-                    <FlatButton label="login with google" primary={true} onClick={this.handleLogin}/>
+                    {"Hello"}
+                    <FlatButton id="login" label="login with google" primary={true} onClick={this.handleLogin}/>
                 </div>
             </MuiThemeProvider>
         );
