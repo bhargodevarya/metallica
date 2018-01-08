@@ -1,5 +1,6 @@
+import Constants from '../../app/Constants'
 const io = require('socket.io-client')
-const socket = io('http://localhost:5000')
+const socket = io(Constants.NOTIFICATION_SERVICE)
 
 import * as TradesActions from '../actions/TradesAction'
 

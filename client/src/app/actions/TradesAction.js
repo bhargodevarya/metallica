@@ -2,6 +2,7 @@ import getTradesData from '../api/MockTradeApi'
 import Actions from './Actions'
 import { makeDateString } from '../util/Util'
 import axios from 'axios'
+import Constants from '../Constants'
 
 export function loadTradesSuccess(trades) {
     //console.log('dispatching', trades, Actions.FETCH_TRADES)
@@ -80,7 +81,7 @@ export function searchTrades(searchCriteria) {
     let trades = getTradesData();
     //TODO create a function that filters trades based on the searchCriteria
     //filterTrades(trades, searchCriteria)
-    axios.post('http://localhost:4000/trade/search',searchCriteria).then(res => {
+    axios.post(Constants.TRADE_SERVICE.concat('/trade/search'),searchCriteria).then(res => {
         console.log(res.data)
     }).catch(err => console.log(err))
     return function(dispatch) {
@@ -96,7 +97,8 @@ export function editTradeAction(trade) {
 
 export function deleteTradeAction(tradeId) {
     console.log('received request to delete trade', tradeId)
-    axios.delete(`http://localhost:4000/trade/deleteTrade/${tradeId}`).then(res => {
+    console.log("trade delete",Constants.TRADE_SERVICE.concat('/trade/deleteTrade/').concat(tradeId))
+    axios.delete(Constants.TRADE_SERVICE.concat('/trade/deleteTrade/').concat(tradeId)).then(res => {
         console.log(res.data)
     }).catch(err => {
         console.log(err)
@@ -121,9 +123,9 @@ export function setTradeDetailToDefault() {
 
 export function fireUpsertTrade(obj) {
     if(obj.newTrade) {
-        axios.post('http://localhost:4000/trade/createTrade',obj).then(res => console.log(res.data))
+        axios.post(Constants.TRADE_SERVICE.concat('/trade/createTrade'),obj).then(res => console.log(res.data))
     } else {
-        axios.put('http://localhost:4000/trade/updateTrade',obj).then(res => console.log(res.data))
+        axios.put(Constants.TRADE_SERVICE.concat('/trade/updateTrade'),obj).then(res => console.log(res.data))
     }
     return function(dispatch) {
         return dispatch(upsertTrade(obj))

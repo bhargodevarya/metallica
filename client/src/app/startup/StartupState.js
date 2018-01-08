@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import {loadRefDataSuccess} from '../actions/RefDataAction'
 import {loadSearchCriteria} from '../actions/SearchAction'
+import Constants from '../../app/Constants'
 
 const AppState = {
     searchCriteria: {
@@ -17,7 +18,7 @@ const AppState = {
 
 
 function initializeAppState(store) {
-    axios.get('http://localhost:3000/refdata').
+    axios.get(Constants.REF_DATA_SERVICE.concat('/refdata')).
     then(res => {console.log("got refData",res.data);
     console.log("startupState ", res.data.locations[0].code)
     store.dispatch(loadRefDataSuccess(res.data))})
